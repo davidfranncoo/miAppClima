@@ -1,10 +1,10 @@
 import React from "react";
 import './Card.css'
 
-export default function Card({min,name,max, img}){
+export default function Card({min,name,max, img,onClose}){
     return(
         <div className="letra">
-            <button onClick={()=>{}}>X</button>
+            <button onClick={(e)=>onClose(e)}>X</button>
             <div>
                 <h1 className="letra">{name}</h1>
             </div>

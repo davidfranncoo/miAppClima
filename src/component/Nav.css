@@ -1,0 +1,6 @@
+.nav{
+    display: flex;
+    font-size: 20px;
+    background-color: aqua;
+    align-items: flex-start;
+}

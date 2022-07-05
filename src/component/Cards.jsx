@@ -1,22 +1,27 @@
 import React from "react";
-import Card from "./Card";
+import Card from './Card.jsx';
 
-export default function Cards({city}){
-
-        return(
-            <div>
-                {city.map((e)=>
-                <Card
-                   max={e.main.temp_max}// las props
-                   min={e.main.temp_min}
-                   name={e.name}
-                   img={e.weather[0].icon}
-                   onClose={() => alert(e.name)}
-                   key={e.id}
-                />
-                )}
-            </div>
+export default function Cards({cities,onClose}){
+  
+    if(cities){
+        return (
+          <div > 
+            {cities.map(c =>  <Card
+                max={c.max}
+                min={c.min}
+                name={c.name}
+                img={c.img}
+                key={c.id}
+                onClose={()=>onClose(c.id)}
+                
+              />
+            )}
+          </div>
         )
-    
-            }
+      } else {
+        return(
+          <div>Sin ciudades</div>
+        )
+      }
+    }
  

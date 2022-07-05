@@ -1,10 +1,33 @@
-import React from "react";
+import React,{ useState} from "react";
 
-export default function SeachBar(){
+//'preventDefault'=>es para evitar comportamiento que trae por default REACT, en 
+//este caso un cargado automatico en la pag
+
+export default function SearchBar({onSearch}) {
+
+    const[input,setInput]=useState('')
+
+    function seEnvioLaInfo(e){
+      e.preventDefault();
+      onSearch(input)
+      setInput('')
+    }
+    
+    const onInputChange =(e)=>{
+          setInput(e.target.value)
+    }
 
     return (
-            <div>
-                <input type='text' placeholder="ingresa ciudad"/><button>ingresar</button>
-            </div>
-    )
-}
+
+
+      <form onSubmit={(e) => { seEnvioLaInfo(e)}}>
+ <input
+        value={input}
+        onChange={(e)=> onInputChange(e)}
+          type="text"
+          placeholder="Ciudad..."
+        />
+        <input type="submit" value="Agregar" />
+      </form>
+    );
+  }
